@@ -1,5 +1,5 @@
-#ifndef ANCHORSHPP
-#define ANCHORSHPP
+#ifndef TRACKINGHPP
+#define TRACKINGHPP
 
 #include "xtensor/xarray.hpp"
 #include "xtensor/xio.hpp"
