@@ -3,7 +3,7 @@ PROJ_NAME=main
 
 #project paths
 CPP_PATH=./src
-HPP_PATH=./headers
+HPP_PATH=./include
 BUILD_PATH=./build
 XTL_PATH=./libs/xtensor
 XTENSOR_PATH=./libs/xtl
@@ -39,6 +39,9 @@ $(BUILD_PATH)/%.o: $(CPP_PATH)/%.cpp $(HPP_PATH)/%.hpp
 
 $(BUILD_PATH)/main.o: $(CPP_PATH)/main.cpp $(HPP_SOURCE)
 	$(CC) -c $(CC_FLAGS) -o $@ $<
+
+#$(BUILD_PATH)/wider_demo.o: $(CPP_PATH)/wider_demo.cpp $(HPP_SOURCE)
+#	$(CC) -c $(CC_FLAGS) -o $@ $<
 
 clean:
 	@ $(RM) $(BUILD_PATH)/*.o $(PROJ_NAME) *~
