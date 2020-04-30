@@ -14,6 +14,7 @@
 #include <float.h>
 #include "util.hpp"
 #include "Vec2.hpp"
+#include <math.h>
 
 class Focus{
 	private:
@@ -21,14 +22,15 @@ class Focus{
 		float mean_x;
 		float border;
 		float resting_border;
-		std::tuple<float, float> resting_center;
+		float resting_center_x;
+		float resting_center_y;
 
 	public:
 		Focus(xt::xarray<float> frame, float border=0.1);
 		virtual ~Focus();
 
-		void update(xt::xarray<float> bboxes, xt::xarray<float> frameh, float target_ratio);
-		std::tuple<xt::xarray<float>, std::tuple<int, int, int, int, int>> crop(xt::xarray<float> frame);
+		void update(xt::xarray<float> bboxes, float frameh, float target_ratio=0.55);
+		std::tuple<xt::xarray<float>, std::tuple<int, int, int, int>> crop(xt::xarray<float> frame);
 };
 
 #endif
