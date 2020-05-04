@@ -21,6 +21,7 @@ class Anchors{
 	private:
 		static xt::xarray<float> create_anchors(float size, xt::xarray<float> aspect_ratios, xt::xarray<float> scales);
 		static xt::xarray<float> replicate_anchors(xt::xarray<float> anchors, Vec2 dimensions, Vec2 fmap_size);
+		
 	public:
 		xt::xarray<float> anchors;
 		Anchors(float size, xt::xarray<float> aspect_ratios, xt::xarray<float> scales, Vec2 dimensions, Vec2 fmap_size);

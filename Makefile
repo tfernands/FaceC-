@@ -7,6 +7,7 @@ HPP_PATH=./include
 BUILD_PATH=./build
 XTL_PATH=./libs/xtensor
 XTENSOR_PATH=./libs/xtl
+TENSORFLOW_PATH=./../tensorflow-master
 
 # .cpp files
 CPP_SOURCE=$(wildcard $(CPP_PATH)/*.cpp)
@@ -21,10 +22,16 @@ OBJ=$(subst .cpp,.o,$(subst $(CPP_PATH),$(BUILD_PATH),$(CPP_SOURCE)))
 CC=g++
  
 # Flags for compiler
-CC_FLAGS=-W         \
+CC_FLAGS=-W\
+		 --std=c++11\
          -I$(HPP_PATH)\
          -I$(XTL_PATH)/include/\
-         -I$(XTENSOR_PATH)/include/
+         -I$(XTENSOR_PATH)/include/\
+         -I$(TENSORFLOW_PATH)/\
+         -I$(TENSORFLOW_PATH)/tensorflow/lite/tools/make/downloads/absl/\
+         -I$(TENSORFLOW_PATH)/tensorflow/lite/tools/make/downloads/flatbuffers/include/\
+         -Bstatic -L$(TENSORFLOW_PATH)/tensorflow/lite/tools/make/gen/windows_x86_32/lib/\
+         -ltensorflow-lite -Lbenchmark-lib.a -pthread
 
 #
 # Compilation and linking
@@ -32,7 +39,7 @@ CC_FLAGS=-W         \
 all: buildFolder $(PROJ_NAME)
  
 $(PROJ_NAME): $(OBJ)
-	$(CC) $(CC_FLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(CC_FLAGS) 
 
 $(BUILD_PATH)/%.o: $(CPP_PATH)/%.cpp $(HPP_PATH)/%.hpp
 	$(CC) -c $(CC_FLAGS) -o $@ $<
