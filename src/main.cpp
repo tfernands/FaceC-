@@ -4,6 +4,8 @@
 #include "detector.hpp"
 
 int main(){
+	
 	Detector detector;
+
 	return 0;
 }

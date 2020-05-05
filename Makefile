@@ -23,7 +23,6 @@ CC=g++
  
 # Flags for compiler
 CC_FLAGS=-W\
-		 --std=c++11\
          -I$(HPP_PATH)\
          -I$(XTL_PATH)/include/\
          -I$(XTENSOR_PATH)/include/\
@@ -46,9 +45,6 @@ $(BUILD_PATH)/%.o: $(CPP_PATH)/%.cpp $(HPP_PATH)/%.hpp
 
 $(BUILD_PATH)/main.o: $(CPP_PATH)/main.cpp $(HPP_SOURCE)
 	$(CC) -c $(CC_FLAGS) -o $@ $<
-
-#$(BUILD_PATH)/wider_demo.o: $(CPP_PATH)/wider_demo.cpp $(HPP_SOURCE)
-#	$(CC) -c $(CC_FLAGS) -o $@ $<
 
 clean:
 	@ $(RM) $(BUILD_PATH)/*.o $(PROJ_NAME) *~

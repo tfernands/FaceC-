@@ -26,6 +26,7 @@ class Focus{
 		float resting_center_y;
 
 	public:
+		Focus();
 		Focus(xt::xarray<float> frame, float border=0.1);
 		virtual ~Focus();
 
